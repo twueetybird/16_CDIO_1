@@ -30,9 +30,9 @@ public class Dice {
 			sum += dice1 + dice2;
 		}
 		
-		//method to check if roll is 2 identicals
+		//method to check if roll is 2 identicals and not when both dice are 1
 		private boolean identicalRoll() {
-			return dice1 == dice2; 
+			return dice1 == dice2 && !(dice1 == 1 && dice2 == 1); 
 		}
 	}
 	
