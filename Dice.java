@@ -29,6 +29,11 @@ public class Dice {
 			this.dice2 = random.nextInt(1, 6);
 			sum += dice1 + dice2;
 		}
+		
+		//method to check if roll is 2 identicals
+		private boolean identicalRoll() {
+			return dice1 == dice2; 
+		}
 	}
 	
 	private Player player1;
@@ -58,9 +63,17 @@ public class Dice {
 			}
 			Player current = playingPlayer ? player2 : player1;
 			current.roll();
+
+			//i changed it in order for both die values get displayed 
+			System.out.println((playingPlayer ? "Player 2" : "Player 1") + " rolled: " + current.dice1 + " and " + current.dice2 + " | sum: " + current.getSum());
 			
-			System.out.println((playingPlayer ? "Player 2" : "Player 1") + " rolled : " + (current.dice1 + current.dice2) + " | sum : " + current.getSum());
-			playingPlayer = !playingPlayer;
+			//checks if player rolled 2 identical, if not other player gets turn, else, player gets another turn 
+			if (!current.identicalRoll()) {
+				playingPlayer = !playingPlayer; 
+			} else {
+				System.out.println((playingPlayer ? "Player 2" : "Player 1") + " rolled 2 identical and gets another turn");
+			}
+			
 			
 			if (current.sum >= 40) {
 				System.out.println((playingPlayer ? "Player 2" : "Player 1") + " won");
