@@ -92,13 +92,13 @@ public class Dice {
 		scanner.close();
 	}
 
-	private void ifBothOne(Player current) {
+	private void ifBothOne(Player current, boolean playingPlayer) {
         // . Spilleren mister alle sine point hvis spilleren slår to 1'ere
 
         	if (current.dice1 == 1 && current.dice2 == 1) {
 
-            	current.reset();
-
+            		current.reset();
+			System.out.println((playingPlayer ? "Player 2" : "Player 1") + " rolled two ones");
         	}
 
     	}
