@@ -92,7 +92,7 @@ public class Dice {
 		scanner.close();
 	}
 
-	private void ifBothOne() {
+	private void ifBothOne(Player current) {
         // . Spilleren mister alle sine point hvis spilleren slår to 1'ere
 
         	if (current.dice1 == 1 && current.dice2 == 1) {
