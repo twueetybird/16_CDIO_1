@@ -74,23 +74,34 @@ public class Dice {
 				System.out.println((playingPlayer ? "Player 2" : "Player 1") + " rolled 2 identical and gets another turn");
 			}
 			
-			
 			if (current.sum >= 40) {
-				System.out.println((playingPlayer ? "Player 2" : "Player 1") + " won");
-				player1.reset();
-				player2.reset();
-				playingPlayer = false;
-				break;
-			}
-
-            // Extra assignemnts goes here 
-			ifBothOne();
+		                if (twoEquals(current, playingPlayer)) {
+		                    System.out.println((playingPlayer ? "Player 2" : "Player 1") + " won");
+		                    player1.reset();
+		                    player2.reset();
+		                    playingPlayer = false;
+		                    break;
+		                }
+			} else {
+			    ifBothOne();
+            		} 
 			
 			System.out.println((playingPlayer ? "Player 2" : "Player 1") + " | Type any string to roll");
 		}
 		
 		scanner.close();
 	}
+
+    private boolean twoEquals(Player current, boolean playingPlayer){
+        if(current.dice1 == current.dice2){
+            if (ifBothOne(current, playingPlayer)) {
+                return false;
+            }
+            return true;
+        }
+
+        return false;
+    }
 
 	private void ifBothOne(Player current, boolean playingPlayer) {
         // . Spilleren mister alle sine point hvis spilleren slår to 1'ere
