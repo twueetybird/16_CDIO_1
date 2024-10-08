@@ -85,6 +85,9 @@ public class Dice {
                 }
 			} else {
 			    ifBothOne(current, playingPlayer);
+                if (ifBothSixes(current, playingPlayer)) {
+                    break;
+                }
             } 
 			
 			System.out.println((playingPlayer ? "Player 2" : "Player 1") + " | Type any string to roll");
@@ -114,6 +117,14 @@ public class Dice {
         	}
 
     	}
+
+    private boolean ifBothSixes(Player current, boolean playingPlayer) {
+        if ((current.lastDice1 == 6) && (current.lastDice2 == 6) && (current.dice1 == 6) && (current.dice2 == 6)) {
+            System.out.println("Congratulations! " + (playingPlayer ? "Player 2" : "Player 1") + " won the game by rolling four sixes in a row!");
+            return true;
+        }
+        return false;
+    }
 	
 	public static void main(String[] args) {
 		new Dice();
