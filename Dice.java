@@ -74,17 +74,18 @@ public class Dice {
 				System.out.println((playingPlayer ? "Player 2" : "Player 1") + " rolled 2 identical and gets another turn");
 			}
 			
+			
 			if (current.sum >= 40) {
-		                if (twoEquals(current, playingPlayer)) {
-		                    System.out.println((playingPlayer ? "Player 2" : "Player 1") + " won");
-		                    player1.reset();
-		                    player2.reset();
-		                    playingPlayer = false;
-		                    break;
-		                }
+                if (twoEquals(current, playingPlayer)) {
+                    System.out.println((playingPlayer ? "Player 2" : "Player 1") + " won");
+                    player1.reset();
+                    player2.reset();
+                    playingPlayer = false;
+                    break;
+                }
 			} else {
-			    ifBothOne();
-            		} 
+			    ifBothOne(current, playingPlayer);
+            } 
 			
 			System.out.println((playingPlayer ? "Player 2" : "Player 1") + " | Type any string to roll");
 		}
@@ -94,7 +95,7 @@ public class Dice {
 
     private boolean twoEquals(Player current, boolean playingPlayer){
         if(current.dice1 == current.dice2){
-            if (ifBothOne(current, playingPlayer)) {
+            if (current.dice1 == 1) {
                 return false;
             }
             return true;
