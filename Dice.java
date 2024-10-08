@@ -77,14 +77,15 @@ public class Dice {
 			
 			if (current.sum >= 40) {
                 if (twoEquals(current, playingPlayer)) {
+					if (ifBothOne(current, playingPlayer)) {
+						break;
+					}
                     System.out.println((playingPlayer ? "Player 2" : "Player 1") + " won");
-                    player1.reset();
-                    player2.reset();
-                    playingPlayer = false;
                     break;
                 }
 			} else {
 			    ifBothOne(current, playingPlayer);
+
                 if (ifBothSixes(current, playingPlayer)) {
                     break;
                 }
@@ -107,15 +108,14 @@ public class Dice {
         return false;
     }
 
-	private void ifBothOne(Player current, boolean playingPlayer) {
-        // . Spilleren mister alle sine point hvis spilleren slår to 1'ere
-
+	private boolean ifBothOne(Player current, boolean playingPlayer) {
+        	// Spilleren mister alle sine point hvis spilleren slår to 1'ere
         	if (current.dice1 == 1 && current.dice2 == 1) {
-
-            		current.reset();
-			System.out.println((playingPlayer ? "Player 2" : "Player 1") + " rolled two ones");
+            	current.reset();
+				System.out.println((playingPlayer ? "Player 2" : "Player 1") + " rolled two ones | sum: " + current.sum);
+				return true;
         	}
-
+			return false;
     	}
 
     private boolean ifBothSixes(Player current, boolean playingPlayer) {
