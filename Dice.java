@@ -83,13 +83,25 @@ public class Dice {
 				break;
 			}
 
-            // Extra assignemnts goes here
+            // Extra assignemnts goes here 
+			ifBothOne();
 			
 			System.out.println((playingPlayer ? "Player 2" : "Player 1") + " | Type any string to roll");
 		}
 		
 		scanner.close();
 	}
+
+	private void ifBothOne() {
+        // . Spilleren mister alle sine point hvis spilleren slår to 1'ere
+
+        	if (current.dice1 == 1 && current.dice2 == 1) {
+
+            	current.reset();
+
+        	}
+
+    	}
 	
 	public static void main(String[] args) {
 		new Dice();
