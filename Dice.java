@@ -39,11 +39,8 @@ public class Dice {
 
 	private boolean playingPlayer = false; // false = player1
 
-	private Random random;
-
 	private Dice() { // Private is fine here, considering the main method is within this class
-		random = new Random(System.nanoTime()); // Create random number generator using the current time in nanoseconds
-												// as a seed
+		Random random = new Random(System.nanoTime()); // Create random number generator using the current time in nanoseconds as a seed
 		player1 = new Player(random);
 		player2 = new Player(random);
 
