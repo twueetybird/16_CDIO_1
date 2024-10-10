@@ -115,7 +115,7 @@ public class Dice {
 	}
 
 	private boolean ifBothOne(Player current, boolean playingPlayer) {
-		// Spilleren mister alle sine point hvis spilleren slår to 1'ere
+		// The player loses all their points if two 1's are rolled
 		if (current.dice1 == 1 && current.dice2 == 1) {
 			current.reset();
 			System.out.println((playingPlayer ? "Player 2" : "Player 1") + " rolled two ones | sum: " + current.sum);
