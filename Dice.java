@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 public class Dice {
 
-	private class Player { // All the visibility in this class can be private including the constructor, as
-							// it resides within the scope of the Dice-class
+	private class Player { // All the visibility in this class can be private including the constructor, as it resides within the scope of the Dice-class
 		private int sum;
 		private int dice1, dice2;
 		private int lastDice1, lastDice2;
@@ -15,10 +14,6 @@ public class Dice {
 		private Player(Random random) {
 			this.sum = 0;
 			this.random = random;
-		}
-
-		private int getSum() {
-			return this.sum;
 		}
 
 		private void reset() {
@@ -70,7 +65,7 @@ public class Dice {
 			current.roll();
 
 			System.out.println((playingPlayer ? "Player 2" : "Player 1") + " rolled: " + current.dice1 + " and "
-					+ current.dice2 + " | sum: " + current.getSum());
+					+ current.dice2 + " | sum: " + current.sum);
 
 			// checks if player rolled 2 identical, if not other player gets turn, else,
 			// player gets another turn
