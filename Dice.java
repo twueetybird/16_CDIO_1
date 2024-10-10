@@ -1,12 +1,9 @@
-package com.ioouteractive;
-
 import java.util.Random;
 import java.util.Scanner;
 
 public class Dice {
 
-	private class Player { // All the visibility in this class can be private including the constructor, as
-							// it resides within the scope of the Dice-class
+	private class Player { // All the visibility in this class can be private including the constructor, as it resides within the scope of the Dice-class
 		private int sum;
 		private int dice1, dice2;
 		private int lastDice1, lastDice2;
@@ -44,7 +41,7 @@ public class Dice {
 		Random random = new Random(System.nanoTime()); // Create random number generator using the current time in nanoseconds as a seed
 		player1 = new Player(random);
 		player2 = new Player(random);
-        
+
         runGame();
 	}
 
@@ -57,8 +54,7 @@ public class Dice {
 
 		String input;
 		while (scanner.hasNext()) {
-			input = scanner.nextLine(); // Getting an actual input is necessary as we cannot retrieve keystrokes
-										// directly from the OS without using third party libraries
+			input = scanner.nextLine(); // Getting an actual input is necessary as we cannot retrieve keystrokes directly from the OS without using third party libraries
 			if (input.equalsIgnoreCase("exit")) {
 				System.out.println("Goodbye :(");
 				break; // Break loop and to close scanner and exit
@@ -69,8 +65,7 @@ public class Dice {
 			System.out.println((playingPlayer ? "Player 2" : "Player 1") + " rolled: " + current.dice1 + " and "
 					+ current.dice2 + " | sum: " + current.sum);
 
-			// checks if player rolled 2 identical, if not other player gets turn, else,
-			// player gets another turn
+			// Checks if player rolled 2 identical, if not other player gets a turn, otherwise, current player gets another turn
 			if (!current.identicalRoll()) {
 				playingPlayer = !playingPlayer;
 			} else {
@@ -123,8 +118,7 @@ public class Dice {
 
 	private boolean ifBothSixes(Player current, boolean playingPlayer) {
 		if ((current.lastDice1 == 6) && (current.lastDice2 == 6) && (current.dice1 == 6) && (current.dice2 == 6)) {
-			System.out.println("Congratulations! " + (playingPlayer ? "Player 2" : "Player 1")
-					+ " won the game by rolling four sixes in a row!");
+			System.out.println("Congratulations! " + (playingPlayer ? "Player 2" : "Player 1") + " won the game by rolling four sixes in a row!");
 			return true;
 		}
 		return false;
