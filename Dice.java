@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class Dice {
 
-	private class Player { // All the visibility in this class can be private including the constructor, as it resides within the scope of the Dice-class
+	private class Player { // All the visibility in this class can be private including the constructor, as
+							// it resides within the scope of the Dice-class
 		private int sum;
 		private int dice1, dice2;
 		private int lastDice1, lastDice2;
@@ -16,16 +17,16 @@ public class Dice {
 			this.random = random;
 		}
 
+		private void reset() {
+			this.sum = 0;
+		}
+
 		private void roll() {
 			this.lastDice1 = dice1;
 			this.lastDice2 = dice2;
 			this.dice1 = random.nextInt(1, 6);
 			this.dice2 = random.nextInt(1, 6);
 			sum += dice1 + dice2;
-		}
-
-		private void reset() {
-			this.sum = 0;
 		}
 
 		// method to check if roll is 2 identicals and not when both dice are 1
@@ -43,7 +44,11 @@ public class Dice {
 		Random random = new Random(System.nanoTime()); // Create random number generator using the current time in nanoseconds as a seed
 		player1 = new Player(random);
 		player2 = new Player(random);
+        
+        runGame();
+	}
 
+    private void runGame() {
 		Scanner scanner = new Scanner(System.in);
 		scanner.useLocale(java.util.Locale.ENGLISH);
 
@@ -93,11 +98,11 @@ public class Dice {
 		}
 
 		scanner.close();
-	}
+    }
 
 	private boolean twoEquals(Player current, boolean playingPlayer) {
 		if (current.dice1 == current.dice2) {
-			if (current.dice1 == 1) {
+			if (current.dice1 == 1) { // In case both the dice are one
 				return false;
 			}
 			return true;
