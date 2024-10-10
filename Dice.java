@@ -16,16 +16,16 @@ public class Dice {
 			this.random = random;
 		}
 
-		private void reset() {
-			this.sum = 0;
-		}
-
 		private void roll() {
 			this.lastDice1 = dice1;
 			this.lastDice2 = dice2;
 			this.dice1 = random.nextInt(1, 6);
 			this.dice2 = random.nextInt(1, 6);
 			sum += dice1 + dice2;
+		}
+
+		private void reset() {
+			this.sum = 0;
 		}
 
 		// method to check if roll is 2 identicals and not when both dice are 1
