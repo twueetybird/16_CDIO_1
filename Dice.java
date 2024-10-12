@@ -42,7 +42,7 @@ public class Dice {
 			}
 
 			// Checks if player rolled 2 identical, if not other player gets a turn, otherwise, current player gets another turn
-			if (!twoEquals(current, playingPlayer)) {
+			if (!twoEquals(current)) {
 				playingPlayer = !playingPlayer; // Setup playingPlayer for player change next turn
 			} else {
 				if (current.getSum() < 40) {
@@ -54,11 +54,11 @@ public class Dice {
 			}
 
 			if (current.getSum() >= 40 + current.getDice1() + current.getDice2()) {
-				if (twoEquals(current, playingPlayer)) {
+				if (twoEquals(current)) {
 					if (current.identicalRoll()) { // Are they identical but not ones
 						System.out.println((playingPlayer ? "Player 2" : "Player 1") + " won");
 						break; // Stop the game
-					} else if (ifBothOne(current, playingPlayer)) {
+					} else if (ifBothOne(current)) {
 						// The player loses all their points if two 1's are rolled
 						current.resetSum();
 						System.out.println((playingPlayer ? "Player 2" : "Player 1") + " rolled two ones and lost all their points | sum: " + current.getSum());
@@ -76,7 +76,7 @@ public class Dice {
 		scanner.close();
     }
 
-	private boolean twoEquals(Player current, boolean playingPlayer) {
+	private boolean twoEquals(Player current) {
 		if (current.getDice1() == current.getDice2()) {
 			return true;
 		}
@@ -84,7 +84,7 @@ public class Dice {
 		return false;
 	}
 
-	private boolean ifBothOne(Player current, boolean playingPlayer) {
+	private boolean ifBothOne(Player current) {
 		if (current.getDice1() == 1 && current.getDice2() == 1) {
 			return true;
 		}
